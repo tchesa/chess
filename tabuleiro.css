@@ -10,6 +10,11 @@ td {
     margin: 0;
 }
 
+.piece {
+    width: 60px;
+    height: 60px;
+}
+
 .light {
     background-color: #f0d9b5;
 }
@@ -33,8 +38,9 @@ td span {
 
 td div {
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: 60px;
+    height: 60px;
+    
 }
 
 td .row {
