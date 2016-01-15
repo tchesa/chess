@@ -1,6 +1,6 @@
 var isOnDrag = false;
 var pieceIdOnDrag = "";
-
+//teste
 function inicializaTabuleiro() 
 {
     //alert("InicializaTabuleiro");
@@ -27,8 +27,7 @@ function getPieceId(row, column)
     return row + String.fromCharCode("a".charCodeAt() + column - 1);
 }
 
-function startDrag(image)
-{
+function startDrag(image) {
     //alert("teste");
     
     if(!isOnDrag)
