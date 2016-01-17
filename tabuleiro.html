@@ -5,360 +5,360 @@
         <link rel="stylesheet" href="tabuleiro.css">
         <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     </head>
-    <script>
-        
-    </script>
+
     <body>
+        <header id="debug">Debug<br></header>
       <table>
         <tr>
             <td class="light">
-                <div onmouseup="endDrag('1a');">
-                    <span class="row">1 </span>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="1a" onmousedown="startDrag(this)">
+                <div ondragover="return false" ondrop="drag_drop(event)">
+                    <span class="row">1</span>
+                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="1a" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)">
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('1b');">
-                <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="1b" onmousedown="startDrag(this)">
+            <td class="dark">
+                <!-- sem o ondragover, o ondrop não funciona -->
+                <div ondragover="return false" ondrop="drag_drop(event)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('1c');">
+            <td class="light">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="1c" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('1d');">
+            <td class="dark">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="1d" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('1e');">
+            <td class="light">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="1e" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('1f');">
+            <td class="dark">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="1f" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('1g');">
+            <td class="light">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="1g" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('1h');">
+            <td class="dark">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="1h" onmousedown="startDrag(this)">
+
                 </div>
             </td>
         </tr>
         <tr>
-            <td class="dark" onmouseup="endDrag('2a');">
+            <td class="dark">
                 <div>
                     <span class="row">2 </span>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="2a" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('2b');">
+            <td class="light">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="2b" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('2c');">
+            <td class="dark">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="2c" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('2d');">
+            <td class="light">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="2d" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('2e');">
+            <td class="dark">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="2e" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('2f');">
+            <td class="light">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="2f" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('2g');">
+            <td class="dark">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="2g" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('2h');">
+            <td class="light">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="2h" onmousedown="startDrag(this)">
+
                 </div>
             </td>
         </tr>
         <tr>
-            <td class="light" onmouseup="endDrag('3a');">
-                <div onmouseup="endDrag('3a');">
+            <td class="light">
+                <div>
                     <span class="row">3 </span>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="3a" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('3b');">
+            <td class="dark">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="3b" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('3c');">
+            <td class="light">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="3c" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('3d');">
+            <td class="dark">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="3d" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('3e');">
+            <td class="light">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="3e" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('3f');">
+            <td class="dark">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="3f" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('3g');">
+            <td class="light">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="3g" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('3h');">
+            <td class="dark">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="3h" onmousedown="startDrag(this)">
+
                 </div>
             </td>
         </tr>
         <tr>
-            <td class="dark" onmouseup="endDrag('4a');">
+            <td class="dark">
                 <div>
                     <span class="row">4 </span>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="4a" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('4b');">
+            <td class="light">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="4b" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('4c');">
+            <td class="dark">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="4c" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('4d');">
+            <td class="light">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="4d" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('4e');">
+            <td class="dark">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="4e" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('4f');">
+            <td class="light">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="4f" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('4g');">
+            <td class="dark">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="4g" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('4h');">
+            <td class="light">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="4h" onmousedown="startDrag(this)">
+
                 </div>
             </td>
         </tr>
         <tr>
-            <td class="light" onmouseup="endDrag('5a');">
+            <td class="light">
                 <div>
                     <span class="row">5 </span>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="5a" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('5b');">
+            <td class="dark">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="5b" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('5c');">
+            <td class="light">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="5c" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('5d');">
+            <td class="dark">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="5d" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('5e');">
+            <td class="light">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="5e" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('5f');">
+            <td class="dark">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="5f" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('5g');">
+            <td class="light">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="5g" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('5h');">
+            <td class="dark">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="5h" onmousedown="startDrag(this)">
+
                 </div>
             </td>
         </tr>
         <tr>
-            <td class="dark" onmouseup="endDrag('6a');">
+            <td class="dark">
                 <div>
                     <span class="row">6 </span>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="6a" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('6b');">
+            <td class="light">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="6b" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('6c');">
+            <td class="dark">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="6c" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('6d');">
+            <td class="light">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="6d" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('6e');">
+            <td class="dark">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="6e" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('6f');">
+            <td class="light">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="6f" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('6g');">
+            <td class="dark">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="6g" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('6h');">
+            <td class="light">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="6h" onmousedown="startDrag(this)">
+
                 </div>
             </td>
         </tr>
         <tr>
-            <td class="light" onmouseup="endDrag('7a');">
+            <td class="light">
                 <div>
                     <span class="row">7 </span>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="7a" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('7b');">
+            <td class="dark">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="7b" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('7c');">
+            <td class="light">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="7c" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('7d');">
+            <td class="dark">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="7d" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('7e');">
+            <td class="light">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="7e" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('7f');">
+            <td class="dark">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="7f" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('7g');">
+            <td class="light">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="7g" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('7h');">
+            <td class="dark">
                 <div>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="7h" onmousedown="startDrag(this)">
+
                 </div>
             </td>
         </tr>
         <tr>
-            <td class="dark" onmouseup="endDrag('8a');">
+            <td class="dark">
                 <div>
                     <span class="row">8 </span>
                     <span class="column">a </span>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="8a" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('8b');">
+            <td class="light">
                 <div>
                     <span class="column">b </span>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="8b" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('8c');">
+            <td class="dark">
                 <div>
                     <span class="column">c </span>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="8c" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('8d');">
+            <td class="light">
                 <div>
                     <span class="column">d </span>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="8d" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('8e');">
+            <td class="dark">
                 <div>
                     <span class="column">e </span>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="8e" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('8f');">
+            <td class="light">
                 <div>
                     <span class="column">f </span>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="8f" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="dark" onmouseup="endDrag('8g');">
+            <td class="dark">
                 <div>
                     <span class="column">g </span>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="8g" onmousedown="startDrag(this)">
+
                 </div>
             </td>
-            <td class="light" onmouseup="endDrag('8h');">
+            <td class="light">
                 <div>
                     <span class="column">h </span>
-                    <img src="_images/chess-pieces/peao.png" alt="peao" class="piece" id="8h" onmousedown="startDrag(this)">
+
                 </div>
             </td>
         </tr>
