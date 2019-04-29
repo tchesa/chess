@@ -1,0 +1,45 @@
+.Board {
+  border-collapse: collapse;
+  border: 2px solid black;
+  margin: 20px;
+}
+
+.Board td {
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.Board tr:nth-child(odd) td:nth-child(odd),
+.Board tr:nth-child(even) td:nth-child(even) {
+  background-color: #f0d9b5;
+}
+
+.Board tr:nth-child(odd) td:nth-child(even),
+.Board tr:nth-child(even) td:nth-child(odd) {
+  background-color: #b58863;
+}
+
+.Board tr:nth-child(odd) td:nth-child(odd) .Info,
+.Board tr:nth-child(even) td:nth-child(even) .Info {
+  color: #b58863;
+}
+
+.Board tr:nth-child(odd) td:nth-child(even) .Info,
+.Board tr:nth-child(even) td:nth-child(odd) .Info {
+  color: #f0d9b5;
+}
+
+.Board td .Info.Row {
+  position: absolute;
+  top: 0;
+  left: 3px;
+}
+
+.Board td .Info.Column {
+  position: absolute;
+  bottom: 0;
+  right: 3px;
+}
