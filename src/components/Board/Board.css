@@ -47,3 +47,7 @@
   bottom: -1px;
   right: 2px;
 }
+
+.Board td.active {
+  background-color: #40B4FF !important;
+}
