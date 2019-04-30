@@ -32,14 +32,18 @@
   color: #f0d9b5;
 }
 
+.Board td .Info {
+  font-size: 11px;
+}
+
 .Board td .Info.Row {
   position: absolute;
-  top: 0;
-  left: 3px;
+  top: -1px;
+  left: 2px;
 }
 
 .Board td .Info.Column {
   position: absolute;
-  bottom: 0;
-  right: 3px;
+  bottom: -1px;
+  right: 2px;
 }
