@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import classes from './Board.css'
-import Piece from '../Piece/Piece'
+import Piece, { TYPES, COLORS } from '../Piece/Piece'
 
 const DIMENSION = 8
 
@@ -30,7 +30,7 @@ class Board extends Component {
           {[...Array(DIMENSION).keys()].map(j => <td key={j}>
             {i === DIMENSION - 1? <span className={[classes.Info, classes.Column].join(' ')}>{String.fromCharCode(65 + j)}</span>: null}
             {j === 0? <span className={[classes.Info, classes.Row].join(' ')}>{i + 1}</span>: null}
-            {this.state.pieces[i][j]? <Piece/>: null}
+            {this.state.pieces[i][j]? <Piece type={TYPES.BISHOP} color={COLORS.WHITE}/>: null}
           </td> )}
         </tr>)}
       </tbody>
