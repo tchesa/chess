@@ -40,6 +40,11 @@ class Board extends Component {
         }
       }
     }
+    pieces[1][4] = null
+    pieces[6][4] = {
+      type: TYPES.BISHOP,
+      color: COLORS.BLACK
+    }
     this.state = { ...this.state, pieces }
   }
 
@@ -53,51 +58,110 @@ class Board extends Component {
     }
 
     if (this.state.pieces[i0][j0].type === TYPES.BISHOP || this.state.pieces[i0][j0].type === TYPES.QUEEN) {
-      for (let j = 0; j < DIMENSION; j++) {
-        if (j === j0) continue
-        const i1 = j - j0 + i0
-        const i2 = i0 + j0 - j
-        if (i1 >= 0 && i1 < DIMENSION) positions[i1][j] = true
-        if (i2 >= 0 && i2 < DIMENSION) positions[i2][j] = true
+      for (let j = j0 + 1; j < DIMENSION; j++) {
+        const i = j - j0 + i0
+        if (i >= 0 && i < DIMENSION) {
+          if (this.state.pieces[i][j]) {
+            if (this.state.pieces[i][j].color !== this.state.pieces[i0][j0].color) positions[i][j] = true
+            break
+          }
+          positions[i][j] = true
+        }
+      }
+      for (let j = j0 + 1; j < DIMENSION; j++) {
+        const i = i0 + j0 - j
+        if (i >= 0 && i < DIMENSION) {
+          if (this.state.pieces[i][j]) {
+            if (this.state.pieces[i][j].color !== this.state.pieces[i0][j0].color) positions[i][j] = true
+            break
+          }
+          positions[i][j] = true
+        }
+      }
+      for (let j = j0 - 1; j >= 0; j--) {
+        const i = j - j0 + i0
+        if (i >= 0 && i < DIMENSION) {
+          if (this.state.pieces[i][j]) {
+            if (this.state.pieces[i][j].color !== this.state.pieces[i0][j0].color) positions[i][j] = true
+            break
+          }
+          positions[i][j] = true
+        }
+      }
+      for (let j = j0 - 1; j >= 0; j--) {
+        const i = i0 + j0 - j
+        if (i >= 0 && i < DIMENSION) {
+          if (this.state.pieces[i][j]) {
+            if (this.state.pieces[i][j].color !== this.state.pieces[i0][j0].color) positions[i][j] = true
+            break
+          }
+          positions[i][j] = true
+        }
       }
     }
 
     if (this.state.pieces[i0][j0].type === TYPES.ROOK || this.state.pieces[i0][j0].type === TYPES.QUEEN) {
-      for (let i = 0; i < DIMENSION; i++) {
-        if (i !== i0) positions[i][j0] = true
-        if (i !== j0) positions[i0][i] = true
+      for (let i = i0 + 1; i < DIMENSION; i++) {
+        if (i >= DIMENSION || this.state.pieces[i][j0]) break
+        positions[i][j0] = true
+      }
+      for (let i = i0 - 1; i >= 0; i--) {
+        if (i < 0 || this.state.pieces[i][j0]) break
+        positions[i][j0] = true
+      }
+      for (let j = j0 + 1; j < DIMENSION; j++) {
+        if (j >= DIMENSION || this.state.pieces[i0][j]) break
+        positions[i0][j] = true
+      }
+      for (let j = j0 - 1; j >= 0; j++) {
+        if (j < 0 || this.state.pieces[i0][j]) break
+        positions[i0][j] = true
       }
     }
 
     if (this.state.pieces[i0][j0].type === TYPES.KNIGHT) {
-      if (i0-1 >= 0 && j0-2 >= 0) positions[i0-1][j0-2] = true
-      if (i0+1 < DIMENSION && j0-2 >= 0) positions[i0+1][j0-2] = true
-      if (i0-1 >= 0 && j0+2 < DIMENSION) positions[i0-1][j0+2] = true
-      if (i0+1 < DIMENSION && j0+2 < DIMENSION) positions[i0+1][j0+2] = true
-      if (i0-2 >= 0 && j0-1 >= 0) positions[i0-2][j0-1] = true
-      if (i0+2 < DIMENSION && j0-1 >= 0) positions[i0+2][j0-1] = true
-      if (i0-2 >= 0 && j0+1 < DIMENSION) positions[i0-2][j0+1] = true
-      if (i0+2 < DIMENSION && j0+1 < DIMENSION) positions[i0+2][j0+1] = true
+      if (i0-1 >= 0 && j0-2 >= 0 && (!this.state.pieces[i0-1][j0-2] || this.state.pieces[i0-1][j0-2].color !== this.state.pieces[i0][j0].color)) positions[i0-1][j0-2] = true
+      if (i0+1 < DIMENSION && j0-2 >= 0 && (!this.state.pieces[i0+1][j0-2] || this.state.pieces[i0+1][j0-2].color !== this.state.pieces[i0][j0].color)) positions[i0+1][j0-2] = true
+      if (i0-1 >= 0 && j0+2 < DIMENSION && (!this.state.pieces[i0-1][j0+2] || this.state.pieces[i0-1][j0+2].color !== this.state.pieces[i0][j0].color)) positions[i0-1][j0+2] = true
+      if (i0+1 < DIMENSION && j0+2 < DIMENSION && (!this.state.pieces[i0+1][j0+2] || this.state.pieces[i0+1][j0+2].color !== this.state.pieces[i0][j0].color)) positions[i0+1][j0+2] = true
+      if (i0-2 >= 0 && j0-1 >= 0 && (!this.state.pieces[i0-2][j0-1] || this.state.pieces[i0-2][j0-1].color !== this.state.pieces[i0][j0].color)) positions[i0-2][j0-1] = true
+      if (i0+2 < DIMENSION && j0-1 >= 0 && (!this.state.pieces[i0+2][j0-1] || this.state.pieces[i0+2][j0-1].color !== this.state.pieces[i0][j0].color)) positions[i0+2][j0-1] = true
+      if (i0-2 >= 0 && j0+1 < DIMENSION && (!this.state.pieces[i0-2][j0+1] || this.state.pieces[i0-2][j0+1].color !== this.state.pieces[i0][j0].color)) positions[i0-2][j0+1] = true
+      if (i0+2 < DIMENSION && j0+1 < DIMENSION && (!this.state.pieces[i0+2][j0+1] || this.state.pieces[i0+2][j0+1].color !== this.state.pieces[i0][j0].color)) positions[i0+2][j0+1] = true
     }
 
     if (this.state.pieces[i0][j0].type === TYPES.KING) {
       if (i0 - 1 >= 0) {
-        positions[i0 - 1][j0] = true
-        if (j0 + 1 < DIMENSION) positions[i0 - 1][j0 + 1] = true
-        if (j0 - 1 >= 0) positions[i0 - 1][j0 - 1] = true
+        if(!this.state.pieces[i0 - 1][j0] || this.state.pieces[i0 - 1][j0].color !== this.state.pieces[i0][j0].color) positions[i0 - 1][j0] = true
+        if (j0 + 1 < DIMENSION) if(!this.state.pieces[i0 - 1][j0 + 1] || this.state.pieces[i0 - 1][j0 + 1].color !== this.state.pieces[i0][j0].color) positions[i0 - 1][j0 + 1] = true
+        if (j0 - 1 >= 0) if(!this.state.pieces[i0 - 1][j0 - 1] || this.state.pieces[i0 - 1][j0 - 1].color !== this.state.pieces[i0][j0].color) positions[i0 - 1][j0 - 1] = true
       }
       if (i0 + 1 < DIMENSION) {
-        positions[i0 + 1][j0] = true
-        if (j0 + 1 < DIMENSION) positions[i0 + 1][j0 + 1] = true
-        if (j0 - 1 >= 0) positions[i0 + 1][j0 - 1] = true
+        if(!this.state.pieces[i0 + 1][j0] || this.state.pieces[i0 + 1][j0].color !== this.state.pieces[i0][j0].color) positions[i0 + 1][j0] = true
+        if (j0 + 1 < DIMENSION) if(!this.state.pieces[i0 + 1][j0 + 1] || this.state.pieces[i0 + 1][j0 + 1].color !== this.state.pieces[i0][j0].color) positions[i0 + 1][j0 + 1] = true
+        if (j0 - 1 >= 0) if(!this.state.pieces[i0 + 1][j0 - 1] || this.state.pieces[i0 + 1][j0 - 1].color !== this.state.pieces[i0][j0].color) positions[i0 + 1][j0 - 1] = true
       }
-      if (j0 + 1 < DIMENSION) positions[i0][j0 + 1] = true
-      if (j0 - 1 >= 0) positions[i0][j0 - 1] = true
+      if (j0 + 1 < DIMENSION) if(!this.state.pieces[i0][j0 + 1] || this.state.pieces[i0][j0 + 1].color !== this.state.pieces[i0][j0].color) positions[i0][j0 + 1] = true
+      if (j0 - 1 >= 0) if(!this.state.pieces[i0][j0 - 1] || this.state.pieces[i0][j0 - 1].color !== this.state.pieces[i0][j0].color) positions[i0][j0 - 1] = true
     }
 
     if (this.state.pieces[i0][j0].type === TYPES.PAWN) {
-      if (this.state.pieces[i0][j0].color === COLORS.WHITE && i0 > 0) positions[i0 - 1][j0] = true
-      else if (this.state.pieces[i0][j0].color === COLORS.BLACK && i0 < DIMENSION - 1) positions[i0 + 1][j0] = true
+      if (this.state.pieces[i0][j0].color === COLORS.WHITE && i0 > 0) {
+        if (!this.state.pieces[i0 - 1][j0] || this.state.pieces[i0 - 1][j0].color !== this.state.pieces[i0][j0].color) {
+          positions[i0 - 1][j0] = true
+          if (!this.state.pieces[i0 - 1][j0] && i0 === 6) { // initial row
+            if (!this.state.pieces[i0 - 2][j0] || this.state.pieces[i0 - 2][j0].color !== this.state.pieces[i0][j0].color) positions[i0 - 2][j0] = true
+          }
+        }
+      }
+      else if (this.state.pieces[i0][j0].color === COLORS.BLACK && i0 < DIMENSION - 1) {
+        if (!this.state.pieces[i0 + 1][j0] || this.state.pieces[i0 + 1][j0].color !== this.state.pieces[i0][j0].color) {
+          positions[i0 + 1][j0] = true
+          if (!this.state.pieces[i0 + 1][j0] && i0 === 1) { // initial row
+            if (!this.state.pieces[i0 + 2][j0] || this.state.pieces[i0 + 2][j0].color !== this.state.pieces[i0][j0].color) positions[i0 + 2][j0] = true
+          }
+        }
+      }
     }
 
     return positions
