@@ -7,7 +7,9 @@ const DIMENSION = 8
 
 class Board extends Component {
 
-  state = {}
+  state = {
+    selectedPiece: null
+  }
 
   constructor (props) {
     super(props)
@@ -101,15 +103,24 @@ class Board extends Component {
     return positions
   }
 
+  handlePieceClick = (i0, j0) => {
+    this.setState({
+      selectedPiece: {
+        x: i0,
+        y: j0
+      }
+    })
+  }
+
   render () {
-    const movements = this.getMovements(0,0)
+    const movements = this.state.selectedPiece? this.getMovements(this.state.selectedPiece.x, this.state.selectedPiece.y): null
     return (<table className={classes.Board}>
       <tbody>
         {[...Array(DIMENSION).keys()].map(i => <tr key={i}>
-          {[...Array(DIMENSION).keys()].map(j => <td key={j} className={movements[i][j]? classes.active: null}>
+          {[...Array(DIMENSION).keys()].map(j => <td key={j} className={movements && movements[i][j]? classes.active: null}>
             {i === DIMENSION - 1? <span className={[classes.Info, classes.Column].join(' ')}>{String.fromCharCode(65 + j)}</span>: null}
             {j === 0? <span className={[classes.Info, classes.Row].join(' ')}>{i + 1}</span>: null}
-            {this.state.pieces[i][j]? <Piece type={this.state.pieces[i][j].type} color={this.state.pieces[i][j].color}/>: null}
+            {this.state.pieces[i][j]? <Piece type={this.state.pieces[i][j].type} color={this.state.pieces[i][j].color} onClick={() => this.handlePieceClick(i,j)}/>: null}
           </td>)}
         </tr>)}
       </tbody>

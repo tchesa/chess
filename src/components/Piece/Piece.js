@@ -56,7 +56,7 @@ const images = {
 }
 
 const Piece = props => {
-  return (<div className={classes.Piece}>
+  return (<div className={classes.Piece} onClick={props.onClick}>
     <img src={images[props.type][props.color]} alt=''/>
   </div>)
 }
