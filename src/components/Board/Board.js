@@ -50,9 +50,9 @@ class Board extends Component {
       }
     }
 
-    if (this.state.pieces[i0][j0] === TYPES.BISHOP) {
-      const diagonal = j0 - i0
+    if (this.state.pieces[i0][j0].type === TYPES.BISHOP || this.state.pieces[i0][j0].type === TYPES.QUEEN) {
       for (let j = 0; j < DIMENSION; j++) {
+        if (j === j0) continue
         const i1 = j - j0 + i0
         const i2 = i0 + j0 - j
         if (i1 >= 0 && i1 < DIMENSION) positions[i1][j] = true
@@ -60,11 +60,49 @@ class Board extends Component {
       }
     }
 
+    if (this.state.pieces[i0][j0].type === TYPES.ROOK || this.state.pieces[i0][j0].type === TYPES.QUEEN) {
+      for (let i = 0; i < DIMENSION; i++) {
+        if (i !== i0) positions[i][j0] = true
+        if (i !== j0) positions[i0][i] = true
+      }
+    }
+
+    if (this.state.pieces[i0][j0].type === TYPES.KNIGHT) {
+      if (i0-1 >= 0 && j0-2 >= 0) positions[i0-1][j0-2] = true
+      if (i0+1 < DIMENSION && j0-2 >= 0) positions[i0+1][j0-2] = true
+      if (i0-1 >= 0 && j0+2 < DIMENSION) positions[i0-1][j0+2] = true
+      if (i0+1 < DIMENSION && j0+2 < DIMENSION) positions[i0+1][j0+2] = true
+      if (i0-2 >= 0 && j0-1 >= 0) positions[i0-2][j0-1] = true
+      if (i0+2 < DIMENSION && j0-1 >= 0) positions[i0+2][j0-1] = true
+      if (i0-2 >= 0 && j0+1 < DIMENSION) positions[i0-2][j0+1] = true
+      if (i0+2 < DIMENSION && j0+1 < DIMENSION) positions[i0+2][j0+1] = true
+    }
+
+    if (this.state.pieces[i0][j0].type === TYPES.KING) {
+      if (i0 - 1 >= 0) {
+        positions[i0 - 1][j0] = true
+        if (j0 + 1 < DIMENSION) positions[i0 - 1][j0 + 1] = true
+        if (j0 - 1 >= 0) positions[i0 - 1][j0 - 1] = true
+      }
+      if (i0 + 1 < DIMENSION) {
+        positions[i0 + 1][j0] = true
+        if (j0 + 1 < DIMENSION) positions[i0 + 1][j0 + 1] = true
+        if (j0 - 1 >= 0) positions[i0 + 1][j0 - 1] = true
+      }
+      if (j0 + 1 < DIMENSION) positions[i0][j0 + 1] = true
+      if (j0 - 1 >= 0) positions[i0][j0 - 1] = true
+    }
+
+    if (this.state.pieces[i0][j0].type === TYPES.PAWN) {
+      if (this.state.pieces[i0][j0].color === COLORS.WHITE && i0 > 0) positions[i0 - 1][j0] = true
+      else if (this.state.pieces[i0][j0].color === COLORS.BLACK && i0 < DIMENSION - 1) positions[i0 + 1][j0] = true
+    }
+
     return positions
   }
 
   render () {
-    const movements = this.getMovements(3,3)
+    const movements = this.getMovements(0,0)
     return (<table className={classes.Board}>
       <tbody>
         {[...Array(DIMENSION).keys()].map(i => <tr key={i}>
