@@ -40,11 +40,11 @@ class Board extends Component {
         }
       }
     }
-    pieces[1][4] = null
-    pieces[6][4] = {
-      type: TYPES.BISHOP,
-      color: COLORS.BLACK
-    }
+    // pieces[1][4] = null
+    // pieces[6][4] = {
+    //   type: TYPES.BISHOP,
+    //   color: COLORS.BLACK
+    // }
     this.state = { ...this.state, pieces }
   }
 
@@ -102,19 +102,31 @@ class Board extends Component {
 
     if (this.state.pieces[i0][j0].type === TYPES.ROOK || this.state.pieces[i0][j0].type === TYPES.QUEEN) {
       for (let i = i0 + 1; i < DIMENSION; i++) {
-        if (i >= DIMENSION || this.state.pieces[i][j0]) break
+        if (i >= DIMENSION || this.state.pieces[i][j0]) {
+          if (this.state.pieces[i][j0] && this.state.pieces[i0][j0].color !== this.state.pieces[i][j0].color) positions[i][j0] = true
+          break
+        }
         positions[i][j0] = true
       }
       for (let i = i0 - 1; i >= 0; i--) {
-        if (i < 0 || this.state.pieces[i][j0]) break
+        if (i < 0 || this.state.pieces[i][j0]) {
+          if (this.state.pieces[i][j0] && this.state.pieces[i0][j0].color !== this.state.pieces[i][j0].color) positions[i][j0] = true
+          break
+        }
         positions[i][j0] = true
       }
       for (let j = j0 + 1; j < DIMENSION; j++) {
-        if (j >= DIMENSION || this.state.pieces[i0][j]) break
+        if (j >= DIMENSION || this.state.pieces[i0][j]) {
+          if (this.state.pieces[i0][j] && this.state.pieces[i0][j0].color !== this.state.pieces[i0][j].color) positions[i0][j] = true
+          break
+        }
         positions[i0][j] = true
       }
-      for (let j = j0 - 1; j >= 0; j++) {
-        if (j < 0 || this.state.pieces[i0][j]) break
+      for (let j = j0 - 1; j >= 0; j--) {
+        if (j < 0 || this.state.pieces[i0][j]) {
+          if (this.state.pieces[i0][j] && this.state.pieces[i0][j0].color !== this.state.pieces[i0][j].color) positions[i0][j] = true
+          break
+        }
         positions[i0][j] = true
       }
     }
@@ -176,12 +188,21 @@ class Board extends Component {
     })
   }
 
+  handlePieceMovement = (i0, j0) => {
+    const piece = { ...this.state.pieces[this.state.selectedPiece.x][this.state.selectedPiece.y] }
+    const pieces = [ ...this.state.pieces ]
+    for (let i = 0; i < DIMENSION; i++) pieces[i] = [ ...this.state.pieces[i] ]
+    pieces[i0][j0] = piece
+    pieces[this.state.selectedPiece.x][this.state.selectedPiece.y] = null
+    this.setState({ pieces, selectedPiece: null })
+  }
+
   render () {
     const movements = this.state.selectedPiece? this.getMovements(this.state.selectedPiece.x, this.state.selectedPiece.y): null
     return (<table className={classes.Board}>
       <tbody>
         {[...Array(DIMENSION).keys()].map(i => <tr key={i}>
-          {[...Array(DIMENSION).keys()].map(j => <td key={j} className={movements && movements[i][j]? classes.active: null}>
+          {[...Array(DIMENSION).keys()].map(j => <td key={j} className={movements && movements[i][j]? classes.active: null} onClick={movements && movements[i][j]? () => this.handlePieceMovement(i,j): null}>
             {i === DIMENSION - 1? <span className={[classes.Info, classes.Column].join(' ')}>{String.fromCharCode(65 + j)}</span>: null}
             {j === 0? <span className={[classes.Info, classes.Row].join(' ')}>{i + 1}</span>: null}
             {this.state.pieces[i][j]? <Piece type={this.state.pieces[i][j].type} color={this.state.pieces[i][j].color} onClick={() => this.handlePieceClick(i,j)}/>: null}
