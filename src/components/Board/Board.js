@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import classes from './Board.css'
 import Piece, { TYPES, COLORS } from '../Piece/Piece'
+import axios from '../../axios'
 
 const DIMENSION = 8
 
@@ -40,11 +41,7 @@ class Board extends Component {
         }
       }
     }
-    // pieces[1][4] = null
-    // pieces[6][4] = {
-    //   type: TYPES.BISHOP,
-    //   color: COLORS.BLACK
-    // }
+
     this.state = { ...this.state, pieces }
   }
 
