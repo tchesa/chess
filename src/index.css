@@ -1,3 +1,9 @@
+/* palette: [#1c1616, #4d2c26, #8e5b3d, #dfb995, #f1e8dc] */
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -6,6 +12,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #1c1616;
 }
 
 code {

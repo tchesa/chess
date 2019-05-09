@@ -1,7 +1,6 @@
 .Board {
   border-collapse: collapse;
   border: 2px solid black;
-  margin: 20px;
 }
 
 .Board td {
@@ -14,22 +13,22 @@
 
 .Board tr:nth-child(odd) td:nth-child(odd),
 .Board tr:nth-child(even) td:nth-child(even) {
-  background-color: #f0d9b5;
+  background-color: #dfb995;
 }
 
 .Board tr:nth-child(odd) td:nth-child(even),
 .Board tr:nth-child(even) td:nth-child(odd) {
-  background-color: #b58863;
+  background-color: #8e5b3d;
 }
 
 .Board tr:nth-child(odd) td:nth-child(odd) .Info,
 .Board tr:nth-child(even) td:nth-child(even) .Info {
-  color: #b58863;
+  color: #8e5b3d;
 }
 
 .Board tr:nth-child(odd) td:nth-child(even) .Info,
 .Board tr:nth-child(even) td:nth-child(odd) .Info {
-  color: #f0d9b5;
+  color: #dfb995;
 }
 
 .Board td .Info {
