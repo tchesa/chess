@@ -52,12 +52,26 @@ class Account extends Component {
     loaded: false,
     user: {
       name: ''
-    }
+    },
+    loading: false
   }
 
   handleSubmit = event => {
     event.preventDefault()
-    if (this.disableForm()) return
+    if (this.disableForm() || this.state.user.name === this.props.user.name) return
+
+    this.setState({loading: true})
+    axios.put(`users/${this.props.user.id}.json`, { name: this.state.user.name }).then(response => {
+      // console.log(response)
+      store.dispatch({
+        type: actions.UPDATE_USER,
+        payload: {
+          user: { ...response.data, id: this.props.user.id }
+        }
+      })
+    }, error => {
+      console.log(error)
+    }).then(() => this.setState({loading: false}))
   }
 
   changeNameHandler = event => {
@@ -70,7 +84,7 @@ class Account extends Component {
   }
 
   disableForm = () => {
-    return !this.state.user.name || (this.state.user.name === this.props.user.name)
+    return this.state.loading || !this.state.user.name
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -85,7 +99,7 @@ class Account extends Component {
         <h1>chess.io</h1>
         <form onSubmit={this.handleSubmit}>
           <label>Your name</label>
-          <input type='text' value={this.state.user.name} onChange={this.changeNameHandler}/><button type='submit' disabled={this.disableForm()}>Save</button>
+          <input type='text' value={this.state.user.name} onChange={this.changeNameHandler}/><button type='submit' disabled={this.disableForm()}>Change</button>
         </form>
       </div>
     )

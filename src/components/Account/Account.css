@@ -14,7 +14,7 @@
   border-bottom-left-radius: 3px;
   padding: 4px 8px;
   border-right: 0 none;
-  width: calc(100% - 50px);
+  width: calc(100% - 67px);
   color: #4d2c26;
   outline: none;
 }
@@ -26,7 +26,7 @@
   padding: 4px 8px;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
-  width: 50px;
+  width: 67px;
   cursor: pointer;
 }
 
