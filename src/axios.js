@@ -1,12 +1,14 @@
 import axios from 'axios'
 
+import { random } from './nicknames'
+
 const instance = axios.create({
   baseURL: 'https://tchesa-chess.firebaseio.com/'
 })
 
 const register = () => {
   localStorage.removeItem('token')
-  instance.post('users.json', {name: 'undefined'}).then(response => {
+  instance.post('users.json', {name: random()}).then(response => {
     console.log('registered:', response.data.name)
     token = response.data.name
     localStorage.setItem('token', token)
@@ -27,6 +29,7 @@ if (localStorage.getItem('token')) {
 } else {
   register()
 }
+
 
 
 export default instance

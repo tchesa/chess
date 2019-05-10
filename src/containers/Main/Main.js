@@ -1,13 +1,14 @@
 import React from 'react'
 
 import Board from '../../components/Board/Board'
+import Account from '../../components/Account/Account'
 import classes from './Main.css'
 
 const main = () => {
   return (
     <div className={classes.Main}>
       <div className={classes.Info}>
-        Info
+        <Account/>
       </div>
       <div className={classes.Board}>
         <Board/>

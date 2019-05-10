@@ -1,0 +1,36 @@
+.Account > h1 {
+  margin-top: 0;
+  color: #dfb995;
+}
+
+.Account form {
+  text-align: left;
+}
+
+.Account input {
+  background-color: #f1e8dc;
+  border: 1px solid #dfb995;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  padding: 4px 8px;
+  border-right: 0 none;
+  width: calc(100% - 50px);
+  color: #4d2c26;
+  outline: none;
+}
+
+.Account button {
+  font-weight: bold;
+  background-color: #dfb995;
+  border: 1px solid #dfb995;
+  padding: 4px 8px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  width: 50px;
+  cursor: pointer;
+}
+
+.Account button:active {
+  background-color: #8e5b3d;
+  border-color: #8e5b3d;
+}
