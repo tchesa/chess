@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 import classes from './Board.css'
 import Piece, { TYPES, COLORS } from '../Piece/Piece'
-import axios from '../../axios'
 
 const DIMENSION = 8
 

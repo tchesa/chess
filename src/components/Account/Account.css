@@ -30,6 +30,12 @@
   cursor: pointer;
 }
 
+.Account button:disabled {
+  color: #4d2c26;
+  opacity: .6;
+  cursor: not-allowed;
+}
+
 .Account button:active {
   background-color: #8e5b3d;
   border-color: #8e5b3d;
