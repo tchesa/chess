@@ -1,6 +1,6 @@
 import React from 'react'
 
-import classes from './Piece.css'
+import classes from './Piece.module.css'
 import pawnA from '../../assets/images/Chess_pdt60.png'
 import pawnB from '../../assets/images/Chess_plt60.png'
 import rookA from '../../assets/images/Chess_rdt60.png'

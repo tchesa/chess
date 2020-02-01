@@ -2,7 +2,7 @@ import React from 'react'
 
 import Board from '../../components/Board/Board'
 import Account from '../../components/Account/Account'
-import classes from './Main.css'
+import classes from './Main.module.css'
 
 const main = () => {
   return (

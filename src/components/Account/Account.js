@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import classes from './Account.css'
+import classes from './Account.module.css'
 import axios from '../../axios'
 import { random } from '../../nicknames'
 import store, { actions } from '../../store'

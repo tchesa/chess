@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import classes from './Board.css'
+import classes from './Board.module.css'
 import Piece, { TYPES, COLORS } from '../Piece/Piece'
 
 const DIMENSION = 8
