@@ -1,77 +1,49 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import io from 'socket.io-client'
 
 import classes from './Account.module.css'
-import axios from '../../axios'
 import { random } from '../../nicknames'
 import store, { actions } from '../../store'
 
-const register = () => {
-  localStorage.removeItem('token')
-  const user = {
-    name: random()
-  }
-
-  axios.post('users.json', user).then(response => {
-    console.log('registered:', response.data.name)
-    token = response.data.name
-    localStorage.setItem('token', token)
-    store.dispatch({
-      type: actions.UPDATE_USER,
-      payload: {
-        user: { ...user, id: token }
-      }
-    })
-  }, error => {
-    console.log(error)
-  })
-}
-
-let token = null
-if (localStorage.getItem('token')) {
-  token = localStorage.getItem('token')
-  axios.get(`users/${token}.json`).then(response => {
-    if (!response.data) register()
-    else console.log('name:', response.data.name)
-    store.dispatch({
-      type: actions.UPDATE_USER,
-      payload: {
-       user: { ...response.data, id: token }
-      }
-    })
-  }, error => {
-    console.log(error)
-  })
-} else {
-  register()
-}
-
 class Account extends Component {
 
-  state = {
-    loaded: false,
-    user: {
-      name: ''
-    },
-    loading: false
+  constructor(props) {
+    super(props);
+
+    const storedName = localStorage.getItem('name')
+    const name = storedName ?? random()
+    if (!storedName) localStorage.setItem('name', name)
+    store.dispatch({
+      type: actions.UPDATE_USER,
+      payload: {
+        user: { name }
+      }
+    })
+
+    this.state = {
+      loaded: false,
+      user: {
+        name: ''
+      },
+      loading: false,
+      socket: io('http://localhost:3001')
+    }
   }
 
   handleSubmit = event => {
     event.preventDefault()
     if (this.disableForm() || this.state.user.name === this.props.user.name) return
 
-    this.setState({loading: true})
-    axios.put(`users/${this.props.user.id}.json`, { name: this.state.user.name }).then(response => {
-      // console.log(response)
-      store.dispatch({
-        type: actions.UPDATE_USER,
-        payload: {
-          user: { ...response.data, id: this.props.user.id }
-        }
-      })
-    }, error => {
-      console.log(error)
-    }).then(() => this.setState({loading: false}))
+    // this.setState({loading: true})
+    localStorage.setItem('name', this.state.user.name)
+    store.dispatch({
+      type: actions.UPDATE_USER,
+      payload: {
+        user: { name: this.state.user.name }
+      }
+    })
+    // this.setState({ loading: false})
   }
 
   changeNameHandler = event => {
