@@ -1,15 +1,28 @@
 const express = require('express')
 const http = require('http')
 const socket = require('socket.io')
-const PORT = 3001
-
-// app.get('/', (req, res) => {
-//   res.sendFile(__dirname + '/../build/build.html');
-// })
+const uniqid = require('uniqid')
 
 const app = express()
 const server = http.createServer(app)
 const io = socket(server, {})
+
+const PORT = 3001
+const data = {
+  games: {}
+}
+
+io.on('connection', socket => {
+  console.log('player connected')
+
+  socket.on('create', callback => {
+    const gameId = uniqid.time()
+    data.games[gameId] = {
+      player1: socket
+    }
+    callback(gameId)
+  })
+})
 
 server.listen(PORT, function () {
   console.log(`listening on *:${PORT}`)
