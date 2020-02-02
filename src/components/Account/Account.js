@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import io from 'socket.io-client'
 
 import classes from './Account.module.css'
 import { random } from '../../nicknames'
 import store, { actions } from '../../store'
 
 class Account extends Component {
-
   constructor(props) {
     super(props);
 
@@ -26,8 +24,7 @@ class Account extends Component {
       user: {
         name: ''
       },
-      loading: false,
-      socket: io('http://localhost:3001')
+      loading: false
     }
   }
 
