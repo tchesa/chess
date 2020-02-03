@@ -11,9 +11,9 @@ class Socket {
     })
   }
 
-  createGame = () => {
+  createGame = fn => {
     this.socket.emit('create', room => {
-      console.log('game created', room)
+      fn(room)
     })
   }
 }
