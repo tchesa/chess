@@ -5,15 +5,17 @@ class Socket {
 
   constructor() {
     this.socket = io('http://localhost:3001')
+  }
 
-    this.socket.on('create', game => {
-      console.log(game)
+  createGame = callback => {
+    this.socket.emit('creategame', game => {
+      callback(game)
     })
   }
 
-  createGame = fn => {
-    this.socket.emit('create', room => {
-      fn(room)
+  findGame = (key, callback) => {
+    this.socket.emit('findgame', key, game => {
+      callback(game)
     })
   }
 }
