@@ -1,7 +1,7 @@
 import { createStore } from 'redux'
 
 const initialState = {
-  user: null
+  user: null,
 }
 
 export const actions = {

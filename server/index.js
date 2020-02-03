@@ -18,9 +18,11 @@ io.on('connection', socket => {
   socket.on('create', callback => {
     const gameId = uniqid.time()
     data.games[gameId] = {
-      player1: socket
+      player1: uniqid.time(),
+      player2: uniqid.time(),
+      public: uniqid.time()
     }
-    callback(gameId)
+    callback(data.games[gameId])
   })
 })
 

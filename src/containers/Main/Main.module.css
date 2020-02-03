@@ -23,4 +23,32 @@
   width: 524px;
   margin-left: 20px;
   margin-right: 20px;
+  position: relative;
+}
+
+.Main .NewGame {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 20px;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Main .NewGame > .NewGameInner {
+  background-color: #4d2c26;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.Main .NewGame > .NewGameInner > button {
+  font-weight: bold;
+    background-color: #dfb995;
+    border: 1px solid #dfb995;
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 3px;
+    white-space: nowrap;
 }

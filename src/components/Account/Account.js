@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import classes from './Account.module.css'
 import { random } from '../../nicknames'
 import store, { actions } from '../../store'
-import Control from '../Control/Control'
 
 class Account extends Component {
   constructor(props) {
@@ -71,7 +70,6 @@ class Account extends Component {
           <label>Your name</label>
           <input type='text' value={this.state.user.name} onChange={this.changeNameHandler}/><button type='submit' disabled={this.disableForm()}>Change</button>
         </form>
-        <Control/>
       </div>
     )
   }

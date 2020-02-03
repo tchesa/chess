@@ -11,9 +11,9 @@ class Socket {
     })
   }
 
-  createRoom = () => {
+  createGame = () => {
     this.socket.emit('create', room => {
-      console.log('room created', room)
+      console.log('game created', room)
     })
   }
 }
