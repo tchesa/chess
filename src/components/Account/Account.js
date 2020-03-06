@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import classes from './Account.module.css'
-import { random } from '../../nicknames'
-import store, { actions } from '../../store'
+import { random } from '../../resources/nicknames'
+import store, { actions } from '../../store/store'
 
 class Account extends Component {
   constructor(props) {

@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 import Board from '../../components/Board/Board'
 import Account from '../../components/Account/Account'
 import classes from './Main.module.css'
-import socket from '../../socket'
+import socket from '../../resources/socket'
 
 class Main extends Component {
 

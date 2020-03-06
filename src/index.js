@@ -5,8 +5,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import './assets/style/index.css'
 import App from './components/App/App'
-import store from './store'
-import './socket'
+import store from './store/store'
+import './resources/socket'
 
 ReactDOM.render(
   <Provider store={store}>
