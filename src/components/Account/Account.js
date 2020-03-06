@@ -10,7 +10,7 @@ class Account extends Component {
     super(props);
 
     const storedName = localStorage.getItem('name')
-    const name = storedName ?? random()
+    const name = storedName || random()
     if (!storedName) localStorage.setItem('name', name)
     store.dispatch({
       type: actions.UPDATE_USER,
@@ -68,7 +68,14 @@ class Account extends Component {
         <h1>chess.io</h1>
         <form onSubmit={this.handleSubmit}>
           <label>Your name</label>
-          <input type='text' value={this.state.user.name} onChange={this.changeNameHandler}/><button type='submit' disabled={this.disableForm()}>Change</button>
+          <input
+            type="text"
+            value={this.state.user.name}
+            onChange={this.changeNameHandler}
+          /><button
+            type="submit"
+            disabled={this.disableForm()}
+          >Change</button>
         </form>
       </div>
     )
